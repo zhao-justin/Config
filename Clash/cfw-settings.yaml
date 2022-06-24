@@ -1,0 +1,362 @@
+showNewVersionIcon: true
+hideAfterStartup: true
+randomControllerPort: true
+runTimeFormat: "hh : mm : ss"
+trayOrders:
+  - - icon
+    - traffic
+  - - status
+    - text
+silentUpdate: true
+selectAfterUpdated: true
+mixinText: >
+  
+  mixin: # object
+
+    # DNS服务器
+    dns:
+      # 开启Clash内置DNS服务器,默认为false
+      enable: true
+      # DNS监听端口
+      # listen: 0.0.0.0:53
+      # ipv6解析,默认为false
+      ipv6: false
+      # 解析nameserver和fallback的DNS服务器,填入纯IP的DNS服务器
+      default-nameserver:
+        - 223.5.5.5
+        - 1.12.12.12
+        - 8.8.8.8
+        - 1.1.1.1
+      # 模式fake-ip  or  redir-host
+      enhanced-mode: fake-ip
+      # Fake IP addresses pool CIDR
+      fake-ip-range: 198.18.0.1/16
+      # 使用本地hosts文件
+      # use-hosts: true
+
+      # 国内用下列DNS解析
+      nameserver:
+        - https://223.5.5.5/dns-query
+        - https://223.6.6.6/dns-query
+        - https://1.12.12.12/dns-query
+        - https://120.53.53.53/dns-query
+        - 223.5.5.5
+        - 223.6.6.6
+        - 1.12.12.12
+        - 120.53.53.53
+
+      # 国外用下列DNS解析
+      fallback:
+        - https://8.8.8.8/dns-query
+        - https://1.1.1.1/dns-query
+        - https://9.9.9.11/dns-query
+        - https://101.101.101.101/dns-query
+        - 8.8.8.8
+        - 1.1.1.1
+        - 9.9.9.11
+        - 101.101.101.101
+
+      # fake-ip仅有,https://github.com/vernesong/OpenClash/
+      fake-ip-filter:
+        # LAN
+        - "*.lan"
+        - "*.localdomain"
+        - "*.example"
+        - "*.invalid"
+        - "*.localhost"
+        - "*.test"
+        - "*.local"
+        - "*.home.arpa"
+        # 放行 NTP 服务
+        - time.*.com
+        - time.*.gov
+        - time.*.edu.cn
+        - time.*.apple.com
+        - time1.*.com
+        - time2.*.com
+        - time3.*.com
+        - time4.*.com
+        - time5.*.com
+        - time6.*.com
+        - time7.*.com
+        - ntp.*.com
+        - ntp1.*.com
+        - ntp2.*.com
+        - ntp3.*.com
+        - ntp4.*.com
+        - ntp5.*.com
+        - ntp6.*.com
+        - ntp7.*.com
+        - "*.time.edu.cn"
+        - "*.ntp.org.cn"
+        - "+.pool.ntp.org"
+        - time1.cloud.tencent.com
+        # 放行网易云音乐
+        - music.163.com
+        - "*.music.163.com"
+        - "*.126.net"
+        # 百度音乐
+        - musicapi.taihe.com
+        - music.taihe.com
+        # 酷狗音乐
+        - songsearch.kugou.com
+        - trackercdn.kugou.com
+        # 酷我音乐
+        - "*.kuwo.cn"
+        # JOOX 音乐
+        - api-jooxtt.sanook.com
+        - api.joox.com
+        - joox.com
+        # QQ 音乐
+        - y.qq.com
+        - "*.y.qq.com"
+        - streamoc.music.tc.qq.com
+        - mobileoc.music.tc.qq.com
+        - isure.stream.qqmusic.qq.com
+        - dl.stream.qqmusic.qq.com
+        - aqqmusic.tc.qq.com
+        - amobile.music.tc.qq.com
+        # 虾米音乐
+        - "*.xiami.com"
+        # 咪咕音乐
+        - "*.music.migu.cn"
+        - music.migu.cn
+        # win10 本地连接检测
+        - "*.msftconnecttest.com"
+        - "*.msftncsi.com"
+        - msftconnecttest.com
+        - msftncsi.com
+        # QQ 快捷登录
+        - localhost.ptlogin2.qq.com
+        - localhost.sec.qq.com
+        # Game
+        # Nintendo Switch
+        - "+.srv.nintendo.net"
+        - "*.n.n.srv.nintendo.net"
+        # Sony PlayStation
+        - "+.stun.playstation.net"
+        # Microsoft Xbox
+        - xbox.*.*.microsoft.com
+        - "*.*.xboxlive.com"
+        - xbox.*.microsoft.com
+        - xnotify.xboxlive.com
+        # Wotgame
+        - "+.battlenet.com.cn"
+        - "+.wotgame.cn"
+        - "+.wggames.cn"
+        - "+.wowsgame.cn"
+        - "+.wargaming.net"
+        # Golang
+        - proxy.golang.org
+        # STUN
+        - stun.*.*
+        - stun.*.*.*
+        - "+.stun.*.*"
+        - "+.stun.*.*.*"
+        - "+.stun.*.*.*.*"
+        # Linksys Router
+        - heartbeat.belkin.com
+        - "*.linksys.com"
+        - "*.linksyssmartwifi.com"
+        # ASUS Router
+        - "*.router.asus.com"
+        # Apple Software Update Service
+        - mesu.apple.com
+        - swscan.apple.com
+        - swquery.apple.com
+        - swdownload.apple.com
+        - swcdn.apple.com
+        - swdist.apple.com
+        # Google
+        - lens.l.google.com
+        - stun.l.google.com
+        # Netflix
+        - "+.nflxvideo.net"
+        # FinalFantasy XIV Worldwide Server & CN Server
+        - "*.square-enix.com"
+        - "*.finalfantasyxiv.com"
+        - "*.ffxiv.com"
+        - "*.ff14.sdo.com"
+        - ff.dorado.sdo.com
+        # Bilibili
+        - "*.mcdn.bilivideo.cn"
+        # Disney Plus
+        - "+.media.dssott.com"
+        # shark007 Codecs 
+        - shark007.net
+        # - "+.*"
+
+      # fake-ip仅有,https://github.com/vernesong/OpenClash/
+      fallback-filter:
+        geoip: true
+        geoip-code: CN
+        ipcidr:
+          - 0.0.0.0/8
+          - 10.0.0.0/8
+          - 100.64.0.0/10
+          - 127.0.0.0/8
+          - 169.254.0.0/16
+          - 172.16.0.0/12
+          - 192.0.0.0/24
+          - 192.0.2.0/24
+          - 192.168.0.0/16
+          - 192.88.99.0/24
+          - 198.18.0.0/15
+          - 198.51.100.0/24
+          - 203.0.113.0/24
+          - 224.0.0.0/4
+          - 240.0.0.0/4
+          - 255.255.255.255/32
+        domain:
+          - "+.google.com"
+          - "+.facebook.com"
+          - "+.youtube.com"
+          - "+.githubusercontent.com"
+          - "+.googlevideo.com"
+          - "+.msftconnecttest.com"
+          - "+.msftncsi.com"
+          - msftconnecttest.com
+          - msftncsi.com
+
+    # TUN Mode
+    tun:
+      enable: true
+      stack: system #gvisor system 
+      dns-hijack:
+        - 198.18.0.2:53
+      auto-route: true
+      # 自动检查网络端口,如果设备有多网口或虚拟网卡,建议使用interface-name
+      auto-detect-interface: true
+      # interface-name: lan
+    
+    # https://github.com/Loyalsoldier/clash-rules
+    rule-providers:
+      reject:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject\
+          .txt"
+        path: ./ruleset/reject.yaml
+        interval: 86400
+
+      icloud:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud\
+          .txt"
+        path: ./ruleset/icloud.yaml
+        interval: 86400
+
+      apple:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.\
+          txt"
+        path: ./ruleset/apple.yaml
+        interval: 86400
+
+      google:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google\
+          .txt"
+        path: ./ruleset/google.yaml
+        interval: 86400
+
+      proxy:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.\
+          txt"
+        path: ./ruleset/proxy.yaml
+        interval: 86400
+
+      direct:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct\
+          .txt"
+        path: ./ruleset/direct.yaml
+        interval: 86400
+
+      private:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/privat\
+          e.txt"
+        path: ./ruleset/private.yaml
+        interval: 86400
+
+      gfw:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.tx\
+          t"
+        path: ./ruleset/gfw.yaml
+        interval: 86400
+
+      greatfire:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatf\
+          ire.txt"
+        path: ./ruleset/greatfire.yaml
+        interval: 86400
+
+      tld-not-cn:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-no\
+          t-cn.txt"
+        path: ./ruleset/tld-not-cn.yaml
+        interval: 86400
+
+      telegramcidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegr\
+          amcidr.txt"
+        path: ./ruleset/telegramcidr.yaml
+        interval: 86400
+
+      cncidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr\
+          .txt"
+        path: ./ruleset/cncidr.yaml
+        interval: 86400
+
+      lancidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancid\
+          r.txt"
+        path: ./ruleset/lancidr.yaml
+        interval: 86400
+
+      applications:
+        type: http
+        behavior: classical
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applic\
+          ations.txt"
+        path: ./ruleset/applications.yaml
+        interval: 86400
+    
+    rules:
+      - RULE-SET,applications,DIRECT
+      - DOMAIN,clash.razord.top,DIRECT
+      - DOMAIN,yacd.haishan.me,DIRECT
+      - RULE-SET,private,DIRECT
+      - RULE-SET,reject,REJECT
+      - RULE-SET,icloud,DIRECT
+      - RULE-SET,apple,DIRECT
+      - RULE-SET,google,DIRECT
+      - RULE-SET,proxy,PROXY
+      - RULE-SET,direct,DIRECT
+      - RULE-SET,lancidr,DIRECT
+      - RULE-SET,cncidr,DIRECT
+      - RULE-SET,telegramcidr,PROXY
+      - GEOIP,LAN,DIRECT
+      - GEOIP,CN,DIRECT
+      - MATCH,PROXY
