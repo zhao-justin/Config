@@ -30,7 +30,7 @@ mixinText: >
       # 模式fake-ip  or  redir-host
       enhanced-mode: fake-ip
       # Fake IP addresses pool CIDR
-      fake-ip-range: 198.18.0.1/16
+      # fake-ip-range: 198.18.0.1/16
       # 使用本地hosts文件
       # use-hosts: true
 
