@@ -223,11 +223,17 @@ mixinText: >
       enable: true
       stack: system #gvisor system 
       dns-hijack:
+        # windows
         - 198.18.0.2:53
+        # macos
+        # - 8.8.8.8
+        # - 1.1.1.1
+        # - 223.5.5.5
+        # - 1.12.12.12
       auto-route: true
       # 自动检查网络端口,如果设备有多网口或虚拟网卡,建议使用interface-name
       auto-detect-interface: true
-      # interface-name: lan
+      # interface-name: en0
     
     # https://github.com/Loyalsoldier/clash-rules
     rule-providers:
