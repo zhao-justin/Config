@@ -223,9 +223,9 @@ mixinText: >
       enable: true
       stack: system #gvisor system 
       dns-hijack:
-        # windows
+        # Windows
         - 198.18.0.2:53
-        # macos
+        # MacOS
         # - 8.8.8.8
         # - 1.1.1.1
         # - 223.5.5.5
