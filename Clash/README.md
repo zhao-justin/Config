@@ -1,6 +1,22 @@
+<!--
+ * @Author: Harahi zjc6650681@gmail.com
+ * @Date: 2022-06-27 11:24:56
+ * @LastEditors: Harahi zjc6650681@gmail.com
+ * @LastEditTime: 2022-06-27 13:38:34
+ * @FilePath: /Clash/README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # CFW config
 
 My CFW config(TUN Mode) for windows/macos.
+
+# Guide
+
+1. Install Service Mode.
+2. Turn on Mixin.
+3. Restart CFW && Enjoy.
+
+**Notice: Do not Turn on _System Proxy_.**
 
 ## Windows/MacOS switch
 
