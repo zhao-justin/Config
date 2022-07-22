@@ -224,11 +224,10 @@ dns:
     # Golang
     - proxy.golang.org
     # STUN
-    - stun.*.*
-    - stun.*.*.*
-    - "+.stun.*.*"
-    - "+.stun.*.*.*"
-    - "+.stun.*.*.*.*"
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - +.stun.*.*.*.*.*
     # Linksys Router
     - heartbeat.belkin.com
     - "*.linksys.com"
@@ -242,6 +241,7 @@ dns:
     - swdownload.apple.com
     - swcdn.apple.com
     - swdist.apple.com
+    - apps.apple.com
     # Google
     - lens.l.google.com
     - stun.l.google.com
