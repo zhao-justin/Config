@@ -20,7 +20,7 @@ My CFW config(TUN Mode) for Windows/MacOS.
       stack: system #gvisor system 
       dns-hijack:
         # Windows
-        - 198.18.0.2:53
+        - any:53
         # MacOS
         # - 8.8.8.8
         # - 1.1.1.1
