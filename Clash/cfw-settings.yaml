@@ -98,8 +98,8 @@ mixinText: >
         - "*.music.migu.cn"
         - music.migu.cn
         # win10 本地连接检测
-        - "*.msftconnecttest.com"
-        - "*.msftncsi.com"
+        - "+.msftconnecttest.com"
+        - "+.msftncsi.com"
         # QQ 快捷登录
         - localhost.ptlogin2.qq.com
         - localhost.sec.qq.com
@@ -206,8 +206,8 @@ mixinText: >
         - "+.youtube.com"
         - "+.githubusercontent.com"
         - "+.googlevideo.com"
-        - "*.msftconnecttest.com"
-        - "*.msftncsi.com"
+        # - "+.msftconnecttest.com"
+        # - "+.msftncsi.com"
 
     # 国外用下列DNS解析
     fallback:
@@ -215,6 +215,10 @@ mixinText: >
       - https://dns.google
     
     fake-ip-range: 198.18.0.1/16
+
+    nameserver-policy:
+      "+.msftconnecttest.com": 223.5.5.5
+      "+.msftncsi.com": 223.5.5.5
 
     # TUN Mode
     tun:
@@ -342,6 +346,8 @@ mixinText: >
         interval: 86400
     
     rules:
+      - DOMAIN-SUFFIX,msftncsi.com,DIRECT
+      - DOMAIN-SUFFIX,msftconnecttest.com,DIRECT
       - RULE-SET,applications,DIRECT
       - DOMAIN,clash.razord.top,DIRECT
       - DOMAIN,yacd.haishan.me,DIRECT
@@ -357,3 +363,5 @@ mixinText: >
       - GEOIP,LAN,DIRECT
       - GEOIP,CN,DIRECT
       - MATCH,PROXY
+connShowProcess: true
+showTrayProxyDelayIndicator: true
