@@ -23,15 +23,18 @@ mixinText: >
       # 解析nameserver和fallback的DNS服务器,填入纯IP的DNS服务器
       default-nameserver:
         - 223.6.6.6
-        - 1.1.1.1
+        - 1.0.0.1
       # 模式fake-ip  or  redir-host
       enhanced-mode: fake-ip
+    
       # Fake IP addresses pool CIDR
-      # fake-ip-range: 198.18.0.1/16
+      fake-ip-range: 198.18.0.1/16
+      
       # 使用本地hosts文件
       # use-hosts: true
    
-      # fake-ip仅有,https://github.com/vernesong/OpenClash/tree/master/luci-app-openclash/root/etc/openclash/custom
+      # fake-ip仅有
+      # openclash_custom_fake_filter.list
       fake-ip-filter:
         # LAN
         - "*.lan"
@@ -172,14 +175,15 @@ mixinText: >
         #迅雷
         - +.sandai.net
         - +.n0808.com
-          # 国内用下列DNS解析
+      # 国内用下列DNS解析
       nameserver:
         - https://dns.alidns.com/dns-query
         - https://doh.pub/dns-query
         - 223.6.6.6
         - 120.53.53.53
 
-      # fake-ip仅有,https://github.com/vernesong/OpenClash/
+    # fake-ip仅有,https://github.com/vernesong/OpenClash/
+    # openclash_custom_fallback_filter.yaml
     fallback-filter:
       geoip: true
       geoip-code: CN
@@ -206,15 +210,15 @@ mixinText: >
         - "+.youtube.com"
         - "+.githubusercontent.com"
         - "+.googlevideo.com"
-        # - "+.msftconnecttest.com"
-        # - "+.msftncsi.com"
+        - "+.msftconnecttest.com"
+        - "+.msftncsi.com"
 
     # 国外用下列DNS解析
     fallback:
       - https://dns.cloudflare.com/dns-query
       - https://dns.google
-    
-    fake-ip-range: 198.18.0.1/16
+      - 1.0.0.1
+      - 8.8.4.4
 
     nameserver-policy:
       "+.msftconnecttest.com": 223.5.5.5
@@ -229,119 +233,100 @@ mixinText: >
       auto-route: true
       # 自动检查网络端口,如果设备有多网口或虚拟网卡,建议使用interface-name
       auto-detect-interface: true
+      # interface-name: "Wi-Fi"
       # interface-name: "Ethernet"
+      
     
     # https://github.com/Loyalsoldier/clash-rules
     rule-providers:
       reject:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject\
-          .txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt"
         path: ./ruleset/reject.yaml
         interval: 86400
 
       icloud:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud\
-          .txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt"
         path: ./ruleset/icloud.yaml
         interval: 86400
 
       apple:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.\
-          txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt"
         path: ./ruleset/apple.yaml
         interval: 86400
 
       google:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google\
-          .txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt"
         path: ./ruleset/google.yaml
         interval: 86400
 
       proxy:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.\
-          txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt"
         path: ./ruleset/proxy.yaml
         interval: 86400
 
       direct:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct\
-          .txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt"
         path: ./ruleset/direct.yaml
         interval: 86400
 
       private:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/privat\
-          e.txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt"
         path: ./ruleset/private.yaml
         interval: 86400
 
       gfw:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.tx\
-          t"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
         path: ./ruleset/gfw.yaml
-        interval: 86400
-
-      greatfire:
-        type: http
-        behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatf\
-          ire.txt"
-        path: ./ruleset/greatfire.yaml
         interval: 86400
 
       tld-not-cn:
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-no\
-          t-cn.txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
         path: ./ruleset/tld-not-cn.yaml
         interval: 86400
 
       telegramcidr:
         type: http
         behavior: ipcidr
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegr\
-          amcidr.txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
         path: ./ruleset/telegramcidr.yaml
         interval: 86400
 
       cncidr:
         type: http
         behavior: ipcidr
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr\
-          .txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
         path: ./ruleset/cncidr.yaml
         interval: 86400
 
       lancidr:
         type: http
         behavior: ipcidr
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancid\
-          r.txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
         path: ./ruleset/lancidr.yaml
         interval: 86400
 
       applications:
         type: http
         behavior: classical
-        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applic\
-          ations.txt"
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt"
         path: ./ruleset/applications.yaml
         interval: 86400
     
