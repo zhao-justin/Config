@@ -7,32 +7,52 @@ trayOrders:
   - - status
     - traffic
     - text
-hideTrayIcon: false
+connShowProcess: true
+showTrayProxyDelayIndicator: true
+latencyUrl: http://cp.cloudflare.com/generate_204
 selectAfterUpdated: true
 mixinText: >
   mixin: # object
 
     # DNS服务器
     dns:
+
       # 开启Clash内置DNS服务器,默认为false
       enable: true
+
       # DNS监听端口
-      # listen: 0.0.0.0:53
+      listen: 0.0.0.0:53
+
       # ipv6解析,默认为false
-      ipv6: false
-      # 解析nameserver和fallback的DNS服务器,填入纯IP的DNS服务器
-      default-nameserver:
-        - 223.6.6.6
-        - 1.0.0.1
+      # ipv6: false
+
       # 模式fake-ip  or  redir-host
       enhanced-mode: fake-ip
-    
+
       # Fake IP addresses pool CIDR
       fake-ip-range: 198.18.0.1/16
-      
+
       # 使用本地hosts文件
       # use-hosts: true
-   
+      
+      # 解析nameserver和fallback的DNS服务器，填入纯IP的DNS服务器
+      default-nameserver:
+        - 119.29.29.29
+        - 1.1.1.1
+
+      # 国内用下列DNS解析
+      nameserver:
+        - https://doh.pub/dns-query
+        - https://1.1.1.1/dns-query
+        - 119.29.29.29
+        - 1.1.1.1
+      
+      # 国外用下列DNS解析
+      fallback:
+        - https://1.1.1.1/dns-query
+        - https://cloudflare-dns.com/dns-query
+        - https://dns.google/dns-query
+
       # fake-ip仅有
       # openclash_custom_fake_filter.list
       fake-ip-filter:
@@ -103,7 +123,7 @@ mixinText: >
         # win10 本地连接检测
         - "+.msftconnecttest.com"
         - "+.msftncsi.com"
-        # QQ 快捷登录
+        # QQ 登录
         - localhost.ptlogin2.qq.com
         - localhost.sec.qq.com
         - +.qq.com
@@ -147,10 +167,10 @@ mixinText: >
         - swdownload.apple.com
         - swcdn.apple.com
         - swdist.apple.com
-        - apps.apple.com
         # Google
         - lens.l.google.com
         - stun.l.google.com
+        - na.b.g-tun.com
         # Netflix
         - "+.nflxvideo.net"
         # FinalFantasy XIV Worldwide Server & CN Server
@@ -175,67 +195,58 @@ mixinText: >
         #迅雷
         - +.sandai.net
         - +.n0808.com
-      # 国内用下列DNS解析
-      nameserver:
-        - https://dns.alidns.com/dns-query
-        - https://doh.pub/dns-query
-        - 223.6.6.6
-        - 120.53.53.53
 
-    # fake-ip仅有,https://github.com/vernesong/OpenClash/
-    # openclash_custom_fallback_filter.yaml
-    fallback-filter:
-      geoip: true
-      geoip-code: CN
-      ipcidr:
-        - 0.0.0.0/8
-        - 10.0.0.0/8
-        - 100.64.0.0/10
-        - 127.0.0.0/8
-        - 169.254.0.0/16
-        - 172.16.0.0/12
-        - 192.0.0.0/24
-        - 192.0.2.0/24
-        - 192.88.99.0/24
-        - 192.168.0.0/16
-        - 198.18.0.0/15
-        - 198.51.100.0/24
-        - 203.0.113.0/24
-        - 224.0.0.0/4
-        - 240.0.0.0/4
-        - 255.255.255.255/32
-      domain:
-        - "+.google.com"
-        - "+.facebook.com"
-        - "+.youtube.com"
-        - "+.githubusercontent.com"
-        - "+.googlevideo.com"
-        - "+.msftconnecttest.com"
-        - "+.msftncsi.com"
-
-    # 国外用下列DNS解析
-    fallback:
-      - https://dns.cloudflare.com/dns-query
-      - https://dns.google
-      - 1.0.0.1
-      - 8.8.4.4
-
-    nameserver-policy:
-      "+.msftconnecttest.com": 223.5.5.5
-      "+.msftncsi.com": 223.5.5.5
+      # fake-ip仅有
+      # openclash_custom_fallback_filter.yaml
+      fallback-filter:
+        geoip: true
+        geoip-code: CN
+        ipcidr:
+          - 0.0.0.0/8
+          - 10.0.0.0/8
+          - 100.64.0.0/10
+          - 127.0.0.0/8
+          - 169.254.0.0/16
+          - 172.16.0.0/12
+          - 192.0.0.0/24
+          - 192.0.2.0/24
+          - 192.88.99.0/24
+          - 192.168.0.0/16
+          - 198.18.0.0/15
+          - 198.51.100.0/24
+          - 203.0.113.0/24
+          - 224.0.0.0/4
+          - 240.0.0.0/4
+          - 255.255.255.255/32
+        domain:
+          - "+.google.com"
+          - "+.facebook.com"
+          - "+.youtube.com"
+          - "+.githubusercontent.com"
+          - "+.googlevideo.com"
+          - "+.msftconnecttest.com"
+          - "+.msftncsi.com"
+        
+      nameserver-policy:
+        "+.msftconnecttest.com": 119.29.29.29
+        "+.msftncsi.com": 119.29.29.29
+    
 
     # TUN Mode
     tun:
       enable: true
-      stack: system #gvisor system 
+      stack: system # gvisor system
+      # stack: gvisor # gvisor system 
       dns-hijack:
+        # Window
+        # - 198.18.0.2:53
+        # Linux, macOS or Android
         - any:53
       auto-route: true
-      # 自动检查网络端口,如果设备有多网口或虚拟网卡,建议使用interface-name
+      
+      # 自动检查网络端口,如果设备有多网口或虚拟网卡，建议使用interface-name
       auto-detect-interface: true
       # interface-name: "Wi-Fi"
-      # interface-name: "Ethernet"
-      
     
     # https://github.com/Loyalsoldier/clash-rules
     rule-providers:
@@ -348,5 +359,3 @@ mixinText: >
       - GEOIP,LAN,DIRECT
       - GEOIP,CN,DIRECT
       - MATCH,PROXY
-connShowProcess: true
-showTrayProxyDelayIndicator: true
