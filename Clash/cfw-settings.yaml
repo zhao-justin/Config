@@ -2,13 +2,13 @@ showNewVersionIcon: true
 hideAfterStartup: true
 randomControllerPort: true
 runTimeFormat: "hh : mm : ss"
-hideTrayIcon: false
 trayOrders:
   - - icon
   - - status
     - traffic
     - text
 connShowProcess: true
+hideTrayIcon: false
 showTrayProxyDelayIndicator: true
 latencyUrl: http://cp.cloudflare.com/generate_204
 selectAfterUpdated: true
@@ -47,17 +47,17 @@ mixinText: >
         - https://dns.alidns.com/dns-query
         - https://cloudflare-dns.com/dns-query
         - https://dns.google/dns-query
-        - 119.29.29.29
-        - 223.5.5.5
-        - 1.1.1.1
-        - 8.8.8.8
+        # - 119.29.29.29
+        # - 223.5.5.5
+        # - 1.1.1.1
+        # - 8.8.8.8
       
       # 国外用下列DNS解析
       fallback:
         - https://cloudflare-dns.com/dns-query
         - https://dns.google/dns-query
-        - tls://1.1.1.1:853
-        - tls://8.8.8.8:853
+        # - tls://1.1.1.1:853
+        # - tls://8.8.8.8:853
 
       # fake-ip仅有
       # openclash_custom_fake_filter.list
