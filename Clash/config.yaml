@@ -45,7 +45,7 @@ mode: rule
 log-level: silent
 
 # 外部控制器可以通过 RESTful API 从外部控制Clash
-external-controller: 127.0.0.1:4783
+external-controller: 127.0.0.1:7665
 # RESTful API的密码 (可选)
 secret: '4b2be6bd-0b6c-49b1-b42f-dc8482110b8b'
 
@@ -76,13 +76,16 @@ hosts:
 
 # 某些配置信息,部分功能仅适用于Premium内核
 profile:
+
+  tracing: true
+
   # Store the `select` results in $HOME/.config/clash/.cache
   # set false If you don't want this behavior
   # when two different configurations have groups with the same name, the selected values are shared
-  # store-selected: true
+  store-selected: true
 
   # persistence fakeip
-  store-fake-ip: false
+  store-fake-ip: true
 
 # cfw 仅有
 # 开启系统代理时将忽略这些域(或ip地址)
@@ -108,4 +111,3 @@ cfw-bypass:
   - 172.31.*
   - 192.168.*
   - localhost
-  

@@ -2,6 +2,7 @@ showNewVersionIcon: true
 hideAfterStartup: true
 randomControllerPort: true
 runTimeFormat: "hh : mm : ss"
+hideTrayIcon: false
 trayOrders:
   - - icon
   - - status
@@ -43,15 +44,20 @@ mixinText: >
       # 国内用下列DNS解析
       nameserver:
         - https://doh.pub/dns-query
-        - https://1.1.1.1/dns-query
+        - https://dns.alidns.com/dns-query
+        - https://cloudflare-dns.com/dns-query
+        - https://dns.google/dns-query
         - 119.29.29.29
+        - 223.5.5.5
         - 1.1.1.1
+        - 8.8.8.8
       
       # 国外用下列DNS解析
       fallback:
-        - https://1.1.1.1/dns-query
         - https://cloudflare-dns.com/dns-query
         - https://dns.google/dns-query
+        - tls://1.1.1.1:853
+        - tls://8.8.8.8:853
 
       # fake-ip仅有
       # openclash_custom_fake_filter.list
@@ -245,8 +251,9 @@ mixinText: >
       auto-route: true
       
       # 自动检查网络端口,如果设备有多网口或虚拟网卡，建议使用interface-name
-      auto-detect-interface: true
-      # interface-name: "Wi-Fi"
+      # auto-detect-interface: true
+      interface-name: "Wi-Fi"
+      # interface-name: "Ethernet"
     
     # https://github.com/Loyalsoldier/clash-rules
     rule-providers:
@@ -351,6 +358,7 @@ mixinText: >
       - RULE-SET,reject,REJECT
       - RULE-SET,icloud,DIRECT
       - RULE-SET,apple,DIRECT
+      # - RULE-SET,google,DIRECT
       - RULE-SET,proxy,PROXY
       - RULE-SET,direct,DIRECT
       - RULE-SET,lancidr,DIRECT
